@@ -21,12 +21,14 @@ def encrypt_decrypt_image(img, key, mode='encrypt'):
             pixels[x, y] = (r, g, b)
     return img
 
+#Validatation key logic 
 def validate_key(key):
     if key <= 0:
         messagebox.showwarning("Invalid Key", "Please enter a positive integer key.")
         return False
     return True
 
+#Image opening Logic
 def open_image():
     global img, img_display
     file_path = filedialog.askopenfilename(
@@ -40,6 +42,7 @@ def open_image():
         btn_encrypt.config(state='normal')
         btn_decrypt.config(state='normal')
 
+#Image Displaying Logic 
 def display_image(image):
     global img_display
     img_resized = image.copy()
@@ -48,6 +51,7 @@ def display_image(image):
     label_img.config(image=img_display)
     label_img.image = img_display
 
+#Image Processing Logic 
 def process_image(mode):
     global img
     try:
@@ -73,6 +77,7 @@ def process_image(mode):
         processed.save(save_path)
         messagebox.showinfo("Success", f"Image saved to:\n{save_path}")
 
+#Reseting the window 
 def reset_all():
     global img, img_display
     img = None
